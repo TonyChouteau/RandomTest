@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -11,19 +12,22 @@ public class RandomTest {
 
 	public static void main(String[] args) {
 		test();
-		multipleTest();
+		multipleTest(20);
 	}
 
-	public static void multipleTest(){
+	public static void multipleTest(int total){
 		RandomTest rt = new RandomTest();
 
 		int numbers = 10;
+
+		ArrayList<Double> values = new ArrayList<>(total);
 		
-		for (int i=10; i<100; i++){
-			int iterations = 100*i;
-			System.out.println(iterations);
-			int[] results = rt.mathRandom(numbers,iterations);
-			//int[] results = rt.nextInt(numbers,iterations);
+		for (int i=0; i<total; i++){
+			System.out.println(i);
+			int iterations = 10000000;
+			//System.out.println(iterations);
+			//int[] results = rt.mathRandom(numbers,iterations);
+			int[] results = rt.nextInt(numbers,iterations);
 			//rt.display(results);
 
 			//double mean = rt.mean(mathRandomResults);
@@ -31,10 +35,16 @@ public class RandomTest {
 
 			double[] dif = rt.getDif(results, mean);
 			//rt.display(dif);
+			for (int j=0; j<dif.length; j++){
+
+			}
+
 			Arrays.sort(dif);
-			System.out.println(Math.abs(dif[0])>dif[dif.length-1]?Math.abs(dif[0]):dif[dif.length-1]);
+			values.add(Math.abs(dif[0])>dif[dif.length-1]?Math.abs(dif[0]):dif[dif.length-1]);
 			//System.out.println(rt.mean(dif));
 		}
+		
+		System.out.print(values);
 	}
 
 	public static void test(){
