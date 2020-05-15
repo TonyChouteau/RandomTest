@@ -10,12 +10,17 @@ public class RandomTest {
 	}
 
 	public static void main(String[] args) {
+		test();
+		multipleTest();
+	}
+
+	public static void multipleTest(){
 		RandomTest rt = new RandomTest();
 
 		int numbers = 10;
 		
 		for (int i=10; i<100; i++){
-			int iterations = 1000*i;
+			int iterations = 100*i;
 			System.out.println(iterations);
 			int[] results = rt.mathRandom(numbers,iterations);
 			//int[] results = rt.nextInt(numbers,iterations);
@@ -31,6 +36,28 @@ public class RandomTest {
 			//System.out.println(rt.mean(dif));
 		}
 	}
+
+	public static void test(){
+		RandomTest rt = new RandomTest();
+
+		int numbers = 10;
+		int iterations = 10000000;
+		
+		System.out.println(iterations);
+		int[] results = rt.mathRandom(numbers,iterations);
+		//int[] results = rt.nextInt(numbers,iterations);
+		rt.display(results);
+
+		//double mean = rt.mean(mathRandomResults);
+		double mean = (double)iterations/(double)numbers;
+
+		double[] dif = rt.getDif(results, mean);
+		rt.display(dif);
+		//Arrays.sort(dif);
+		//System.out.println(Math.abs(dif[0])>dif[dif.length-1]?Math.abs(dif[0]):dif[dif.length-1]);
+		//System.out.println(rt.mean(dif));
+	}
+
 
 	public int[] mathRandom(int n, int ite){
 		int[] results = new int[n];
